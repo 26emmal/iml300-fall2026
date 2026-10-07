@@ -1,10 +1,11 @@
 body {
-  background-image: url("assets/sky.gif");
+  background-image: url("assets/thundersky.gif");
   background-size: cover;
   height: 100vh;
 }
 
 img {
+  color:white;
   height: 150px;
   border-radius: 20px;
   padding: 10px;
@@ -14,14 +15,20 @@ img {
 }
 
 img:hover {
-  height: 400px;
+  color:white;
+  height: 300px;
   filter: grayscale(0%);
   /*   border: 1px solid red; */
 }
 
+p {
+  color:white;
+}
+
 p:hover {
   /*   transform: rotate(5deg); */
-  letter-spacing: 1em;
+  color:white;
+  letter-spacing: 1em
 }
 
 .specialCenter {
@@ -41,12 +48,12 @@ a {
 
 @keyframes coolAnimation {
   0% {
-    color: red;
+    color: white;
   }
   50% {
-    color: green;
+    color: deeppink;
   }
   100% {
-    color: blue;
+    color: cyan;
   }
 }
