@@ -2,7 +2,11 @@ body {
   background-image: url("assets/thundersky.gif");
   background-size: cover;
   height: 100vh;
+   font-family: "Libre Caslon Condensed", serif;
 }
+
+
+
 
 img {
   color:white;
