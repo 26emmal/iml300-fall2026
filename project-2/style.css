@@ -10,6 +10,16 @@ dialog {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
+.centered {
+  display: flex;                  /* Activates Flexbox layout */
+  justify-content: center;        /* Centers text horizontally */
+  align-items: center;            /* Centers text vertically */
+  min-height: 100vh;              /* Forces container to take full screen height */
+  text-align: center;             /* Ensures multi-line text is centered within itself */
+}
+
+
+
 #open-btn {
   /* Layout & Sizing */
   display: inline-block;          /* Allows top/bottom padding and custom width */
