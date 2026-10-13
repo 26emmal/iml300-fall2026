@@ -1,0 +1,110 @@
+dialog {
+
+  justify-content: center; 
+  align-items: center;   
+    border: none;
+  border-radius: 8px;
+    font-size:30px;
+  padding: 24px;
+  max-width: 600px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+#open-btn {
+  /* Layout & Sizing */
+  display: inline-block;          /* Allows top/bottom padding and custom width */
+  padding: 12px 24px;            /* Adds inner spacing around text */
+  
+  /* Text Styling */
+  color: #ffffff;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;            /* Centers text if button is wider than text */
+  
+  /* Background & Borders */
+  background-color: #007bff;     /* Core button background color */
+  border: none;                  /* Removes any default borders */
+  border-radius: 6px;            /* Gives the button smooth, rounded corners */
+  
+  /* Interactivity */
+  cursor: pointer;               /* Ensures the pointer hand appears on hover */
+  transition: background-color 0.2s ease; /* Smoothly transitions color states */
+}
+/* Hover State */
+#open-btn:hover {
+  background-color: #0056b3;     /* Darkens background color when hovered over */
+}
+
+/* Click/Active State */
+#open-btn:active {
+  background-color: #004085;     /* Darkens color further when actively clicked */
+  transform: scale(0.98);        /* Slightly shrinks button for a pressed effect */
+}
+#close-btn {
+  /* Layout & Sizing */
+  display: inline-block;          /* Allows top/bottom padding and custom width */
+  padding: 12px 24px;            /* Adds inner spacing around text */
+  
+  /* Text Styling */
+  color: #ffffff;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;            /* Centers text if button is wider than text */
+  
+  /* Background & Borders */
+  background-color: #007bff;     /* Core button background color */
+  border: none;                  /* Removes any default borders */
+  border-radius: 6px;            /* Gives the button smooth, rounded corners */
+  
+  /* Interactivity */
+  cursor: pointer;               /* Ensures the pointer hand appears on hover */
+  transition: background-color 0.2s ease; /* Smoothly transitions color states */
+}
+/* Hover State */
+#close-btn:hover {
+  background-color: #0056b3;     /* Darkens background color when hovered over */
+}
+
+/* Click/Active State */
+#close-btn:active {
+  background-color: #004085;     /* Darkens color further when actively clicked */
+  transform: scale(0.98);        /* Slightly shrinks button for a pressed effect */
+}
+
+.btn {
+  /* Layout & Sizing */
+  display: inline-block;          /* Allows top/bottom padding and custom width */
+  padding: 12px 24px;            /* Adds inner spacing around text */
+  
+  /* Text Styling */
+  color: #ffffff;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;            /* Centers text if button is wider than text */
+  
+  /* Background & Borders */
+  background-color: #007bff;     /* Core button background color */
+  border: none;                  /* Removes any default borders */
+  border-radius: 6px;            /* Gives the button smooth, rounded corners */
+  
+  /* Interactivity */
+  cursor: pointer;               /* Ensures the pointer hand appears on hover */
+  transition: background-color 0.2s ease; /* Smoothly transitions color states */
+}
+
+/* Hover State */
+.btn:hover {
+  background-color: #0056b3;     /* Darkens background color when hovered over */
+}
+
+/* Click/Active State */
+.btn:active {
+  background-color: #004085;     /* Darkens color further when actively clicked */
+  transform: scale(0.98);        /* Slightly shrinks button for a pressed effect */
+}

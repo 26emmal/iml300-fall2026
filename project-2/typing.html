@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1> type here</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username">
+        
+        <br>
+        <br>
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Type your message here..."></textarea>
+        <br>
+        <br>
+        <button id="open-btn">Submit</button>
+
+        <dialog id="my-dialog">
+          <p>Wrong answer! Try again</p>
+          <button id="close-btn">Close</button>
+        </dialog>
+        <script>
+          const dialog = document.getElementById('my-dialog');
+          const openBtn = document.getElementById('open-btn');
+          const closeBtn = document.getElementById('close-btn');
+
+          openBtn.addEventListener('click', () => dialog.showModal());
+          closeBtn.addEventListener('click', () => dialog.close());
+        </script>
+        
+        <br>
+        <br>
+        <br>
+        <a href="credits.html" class="btn">Go Back</a>
+        <a href="check.html" class="btn">Go Next</a>
+    </body>
+</html>
