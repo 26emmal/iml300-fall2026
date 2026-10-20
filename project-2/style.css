@@ -312,6 +312,7 @@ button {
 
 /* Hover State */
 .btn:hover {
+  /*hi*/
   background-color: #C920B0;     /* Darkens background color when hovered over */
 }
 
