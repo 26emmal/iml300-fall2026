@@ -4,10 +4,63 @@
         <meta charset="UTF-8" />
         <title>Start</title>
         <link rel="stylesheet" href="style.css" />
+        <style>
+                 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Condensed&display=swap');
+        h1, h2 {
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color:white;
+            -webkit-text-stroke: 8px white;
+            paint-order: stroke fill; 
+            font-family: "Libre Caslon Condensed", serif;
+            font-weight: 400;
+            font-size: 5em;
+            animation: coolAnimation 3s infinite;
+            transition: transform 1s ease-in-out;
+            transform-origin: top center;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+        }
+        h1:hover {
+          /*   transform: rotate(5deg); */
+          color:white;
+            transform: scale(1.15);
+        }
+        h1 {
+          animation: coolAnimation 3s infinite;
+        }
+            
+        h2 {
+            color:white;
+            font-family: "Libre Caslon Condensed", serif;
+            margin-top: 0;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+        }
+            
+        @keyframes coolAnimation {
+          0% {
+            color: pink;
+          }
+          50% {
+            color: deeppink;
+          }
+          100% {
+            color: cyan;
+          }
+        }
+        </style>
     </head>
-    <body>
+    
+    <body style="background-image: url('assets/anime%20background.jpg'); background-size: cover; height: 100vh;">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Condensed:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <div class="centered">
-        <a href="credits.html" style="font-size:50px;">Click here for something cool</a>
+        <h1>Heart-to-Heart</h1>
+        <h2>The Premium Digital Friendship Simulator</h2>
+        <br>
+        <a href="talking.html" class="btn">Start</a>
     </div>
     </body>
 </html>

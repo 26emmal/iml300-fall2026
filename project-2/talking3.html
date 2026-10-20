@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Title</title>
+    </head>
+    <body style="background-image: url('assets/animehallway.jpg'); background-size: cover; height: 100vh;">
+    <div class=glass-card></div>
+    <div class="centeredright">
+        <div class="creditsbox">
+            60 credits
+        </div>
+    </div>
+        
+    <div class="character">
+     <img src="assets/girlanime.webp"/> 
+    </div>
+        
+     <div class="widget-bottom">
+        <div class="fade-container">
+        <div class="centeredright">
+            <button class="open-btn">Yes, of course I do. [20 CREDITS]</button>
+            </div>
+         <br>
+            <div class="centeredright">
+                <button class="open-btn">Well… I don't know...</button>
+            </div>
+        <Br>
+    
+<dialog id="my-dialog">
+  <h1>Sign up to continue chatting!</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username">
+        <br>
+        <br>
+        <br>
+        <div class ="checkbox-group">
+            <label class="checkbox-line">
+                <input type="checkbox" id="myCheckbox" checked>
+                <span for="myCheckbox">Sign me up for the mailing list!</span>
+            </label>
+            <br>
+            <label class="checkbox-line">
+                <input type="checkbox" id="myCheckbox2" checked>
+                <span for="myCheckbox">Allow third-party partners to monitor chat logs.</span>
+            </label>
+            <br>
+            <label class="checkbox-line">
+                <input type="checkbox" id="myCheckbox3" checked>
+                <span for="myCheckbox">I do not wish to unsubscribe from daily $4.99 Emotional Maintenance fee.</span>
+            </label>
+        </div>
+        <br>
+        <br>
+</dialog>
+
+    <script>
+      const dialog = document.getElementById('my-dialog');
+      const openBtns = document.querySelectorAll('.open-btn');
+      const closeBtn = document.getElementById('close-btn');
+
+      // Loop through all buttons with the class "open-btn"
+      openBtns.forEach(btn => {
+        btn.addEventListener('click', () => dialog.showModal());
+      });
+
+      closeBtn.addEventListener('click', () => dialog.close());
+         </script>
+    </div>
+         
+        <div class=rectangle-text>
+            <div class="text">
+                <div class="typewriter type-1">
+                    <h1>You trust me too, right?</h1>
+                 </div>
+            </div>
+            <div class=triangle-down></div>
+        </div>
+    </div>
+    </body>
+</html>
