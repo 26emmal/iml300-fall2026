@@ -40,21 +40,50 @@ dialog {
   pointer-events: none; /* Allows users to click on text/links through the fade */
 }
 
-.buttons {
-  display: flex;
-  flex-direction: column;        /* Stacks the two hot pink buttons vertically */
-  align-items: flex-end;         /* Right-aligns the buttons */
-  /*gap: 10px;*/
-}
-
 .bottomrow {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; /* 🔑 Crucial: Pushes left group to far-left & right group to far-right */
-  align-items: flex-end;          /* Keeps both groups aligned along their bottom edge */
-  width: 100%;                    /* Spans the full screen width */
-  padding: 0 20px;                /* Keeps elements from touching the browser edges */
+  justify-content: space-between; 
+  align-items: flex-end; /* 🔑 Anchors both namebox and buttons to the bottom edge */
+  width: 100%;
+  padding: 0 20px;
   box-sizing: border-box;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px; /* 🔑 Handles button spacing cleanly without extra height bugs */
+}
+
+.namebox {
+  margin:0;
+  background-color:#ffe4fa; 
+  justify-content:center;
+  display: flex;
+  align-items: center;
+  width:200px;
+  height:50px;
+  border-radius: 20px;
+   margin-right: auto; /* Pushes the element to the left */
+  margin-left: 0;
+  outline: 3px solid #ffb3f1;
+  z-index:2;     
+  padding: 5px 10px;            /* Adds inner spacing around text */
+  
+  /* Text Styling */
+  color: black;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: sans-serif;
+  font-size: 18px;
+  /*font-weight: bold;*/
+  text-align: center; 
+}
+
+.namebox h2 {
+  margin: 0;
+  padding: 0;
 }
 
 .centered {
@@ -120,30 +149,6 @@ dialog {
   width:200px;
   height:50px;
   border-radius: 20px;
-}
-
-.namebox {
-  margin:0;
-  background-color:#ffe4fa; 
-  justify-content:center;
-  display: flex;
-  align-items: center;
-  width:200px;
-  height:50px;
-  border-radius: 20px;
-   margin-right: auto; /* Pushes the element to the left */
-  margin-left: 0;
-  outline: 3px solid #ffb3f1;
-  z-index:2;     
-  padding: 5px 10px;            /* Adds inner spacing around text */
-  
-  /* Text Styling */
-  color: black;                /* Sets text color to white */
-  text-decoration: none;         /* Removes default underline from the link */
-  font-family: sans-serif;
-  font-size: 18px;
-  /*font-weight: bold;*/
-  text-align: center; 
 }
 
 .rectangle-text {
