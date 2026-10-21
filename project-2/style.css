@@ -228,7 +228,7 @@ input[type="checkbox"] {
 .typewriter h1 {
   color: black;
   font-family: monospace;
-  font-size:30px;
+  font-size:25px;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
  /*border-right: .15em solid black; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
