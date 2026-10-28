@@ -774,3 +774,70 @@ button {
   color: #999;
 }
 #credits-banner .small-link.faint { color: #AAA; }
+
+
+
+
+.close-toggle { display: none; }
+
+/* ---------- shared X button ---------- */
+.x {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #888;
+  font: 18px/24px Arial, sans-serif;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+}
+.x:hover { color: #222; }
+
+/* ---------- popup 1: centered image ---------- */
+.ad-popup {
+  position: fixed;
+  inset: 0;                  /* top/right/bottom/left: 0 ... */
+  margin: auto;              /* ...plus auto margins = centered */
+  width: min(480px, 90vw);
+  height: fit-content;       /* otherwise it stretches to full height */
+  z-index: 1100;
+  background: #fff;
+  border: 1px solid #CFCFCF;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.45);   /* dims everything behind it */
+  animation: ad-in 0.3s ease-out 5s both;          /* appears after 5 seconds */
+}
+.ad-popup img { display: block; width: 100%; }
+
+@keyframes ad-in {
+  from { opacity: 0; transform: scale(0.92); visibility: hidden; }
+  to   { opacity: 1; transform: scale(1);    visibility: visible; }
+}
+
+/* ---------- popup 2: bottom banner ---------- */
+.ad-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 900;
+  background: #E4E7EB;
+  animation: rise-up 0.5s ease-out 3s both;        /* rises after 9 seconds */
+}
+.ad-bar-inner {
+  position: relative;
+  max-width: 728px;
+  margin: 0 auto;
+}
+.ad-bar img { display: block; width: 100%; }
+
+@keyframes rise-up {
+  from { transform: translateY(100%); visibility: hidden; }
+  to   { transform: translateY(0);    visibility: visible; }
+}
+
+/* ---------- closing ---------- */
+#img-close:checked ~ .ad-popup,
+#bar-close:checked ~ .ad-bar { display: none; }
