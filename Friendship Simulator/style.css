@@ -379,7 +379,7 @@ input[type="checkbox"] {
   color: #ffffff;                /* Sets text color to white */
   text-decoration: none;         /* Removes default underline from the link */
   font-family: "Single Day", cursive;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;            /* Centers text if button is wider than text */
   
@@ -411,7 +411,7 @@ input[type="checkbox"] {
   color: #ffffff;                /* Sets text color to white */
   text-decoration: none;         /* Removes default underline from the link */
   font-family: "Single Day", cursive;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;            /* Centers text if button is wider than text */
   
@@ -513,7 +513,7 @@ button {
   color: #ffffff;                /* Sets text color to white */
   text-decoration: none;         /* Removes default underline from the link */
   font-family: "Single Day", cursive;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;            /* Centers text if button is wider than text */
   
