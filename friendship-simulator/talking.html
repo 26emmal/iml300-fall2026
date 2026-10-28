@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Title</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+
+    </head>
+    <body style="background-image: url('assets/animehallway.jpg'); background-size: cover; height: 100vh;">
+    <div class=glass-card></div>
+    <div class="sunlight"></div>
+        <div class="particles"></div>
+    <div class="centeredright">
+    <div class="creditsbox">
+            60 credits
+        </div>
+    </div>
+    
+   <div class="character">
+     <img src="assets/girlanime.webp"/> 
+    </div>
+        
+     <div class="widget-bottom">
+        <div class="fade-container">
+            
+        <div class = "bottomrow">
+            <div class="namebox">
+                <h2>Sora</h2>
+            </div>
+            <div class="buttons">
+                <div class="centeredright">
+                    <button class="open-btn">I feel the same way.</button>
+                </div>
+
+                <div class="centeredright">
+                        <button class="open-btn">Aww, how sweet.</button>
+                 </div>
+            </div>
+        </div>
+        
+        <dialog id="my-dialog" class="popup">
+          <h1 style="font-family: sans-serif;font-size:25px">Sign up to continue chatting</h1>
+                <label for="username" style="font-family: sans-serif">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+
+                <div class ="checkbox-group">
+                    <label class="checkbox-line">
+                        <input type="checkbox" id="myCheckbox" checked>
+                        <span style="font-family: sans-serif" for="myCheckbox">Sign me up for the mailing list! </span>
+                    </label>
+                    <label class="checkbox-line">
+                        <input type="checkbox" id="myCheckbox2" checked>
+                        <span style="font-family: sans-serif" for="myCheckbox">Allow third-party partners to monitor chat logs.</span>
+                    </label>
+                    <label class="checkbox-line">
+                        <input type="checkbox" id="myCheckbox3" checked>
+                        <span style="font-family: sans-serif" for="myCheckbox">I would like to donate $10/month to the site.</span>
+                    </label>
+                    <label class="checkbox-line">
+                        <input type="checkbox" id="myCheckbox4" checked>
+                        <span style="font-family: sans-serif" for="myCheckbox">I do not wish to unsubscribe from daily $4.99 Emotional Maintenance fee.</span>
+                    </label>
+                </div>
+                <a href="talking2.html" id="close-btn2" class="close-btn2">Continue</a>
+        </dialog>
+
+        <script>
+      const dialog = document.getElementById('my-dialog');
+      const openBtns = document.querySelectorAll('.open-btn');
+      const closeBtn = document.getElementById('close-btn');
+
+      openBtns.forEach(btn => {
+        btn.addEventListener('click', () => dialog.showModal());
+      });
+
+      closeBtn.addEventListener('click', () => dialog.close());
+         </script>
+        <script src="effects.js"></script>
+    </div>
+         
+         
+        <div class=rectangle-text>
+            <br>
+                <div class="typewriter type-1">
+                    <h1>I've been meaning to tell you, you're one of my closest friends.</h1>
+                 </div>
+                <br>
+        </div>
+    </div>
+    </body>
+</html>

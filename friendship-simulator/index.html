@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Start</title>
+        <link rel="stylesheet" href="style.css" />
+        <style>
+                 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Condensed&display=swap');
+        h1, h2 {
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color:white;
+            -webkit-text-stroke: 8px white;
+            paint-order: stroke fill; 
+            font-family: "Libre Caslon Condensed", serif;
+            font-weight: 400;
+            font-size: 6em;
+            animation: coolAnimation 3s infinite;
+            transition: transform 1s ease-in-out;
+            transform-origin: top center;
+            paint-order: stroke fill;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+        }
+        h1:hover {
+          /*   transform: rotate(5deg); */
+          color:white;
+            transform: scale(1.15);
+        }
+        h1 {
+          animation: coolAnimation 3s infinite;
+        }
+            
+        h2 {
+            color:white;
+            font-family: "Libre Caslon Condensed", serif;
+            margin-top: 0;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+            font-size:2em;
+        }
+            
+        @keyframes coolAnimation {
+          0% {
+            color: pink;
+          }
+          50% {
+            color: deeppink;
+          }
+          100% {
+            color: cyan;
+          }
+        }
+            
+        .petals {
+          position: fixed;
+          inset: 0;                                   /* shorthand for top/right/bottom/left: 0 */
+          background: url('assets/sakura.gif') center / cover no-repeat;
+          pointer-events: none;
+          z-index: 10;
+        }
+        .sparkle {
+          position: fixed;
+          pointer-events: none;     /* so sparkles never block clicks */
+          z-index: 9999;            /* above the petals overlay */
+          font-size: 18px;
+          animation: sparkle 1.5s ease-out forwards;
+        }
+
+        @keyframes sparkle {
+          from {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+          }
+          to {
+            opacity: 0;
+            transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy)))
+                       scale(1.4) rotate(180deg);
+          }
+        }
+        .flash {
+          position: fixed;
+          inset: 0;
+          background: white;
+          opacity: 0;              /* invisible until triggered */
+          pointer-events: none;
+          z-index: 10000;          /* above the sparkles (9999) and petals (10) */
+        }
+
+        .flash.go {
+          animation: flash 1.2s ease-in forwards;
+        }
+
+        @keyframes flash {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        </style>
+    </head>
+    
+    <body style="background-image: url('assets/anime%20background.jpg'); background-size: cover; height: 100vh;">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Condensed:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <div class="petals"></div>
+    <div class="flash"></div>
+    <div class="centered">
+        <h1>Heart-to-Heart</h1>
+        <h2>The Premium Digital Friendship Simulator</h2>
+        <br>
+        <a href="atalking.html" class="btn">♡ Start ♡</a>
+    </div>
+    </body>
+    
+</html>
+
+<script>
+  const colors = ['#ff69b4', '#ffd1e8', '#fff3a3', '#ffffff'];
+
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();               // stop the instant page change
+        document.querySelector('.flash').classList.add('go');
+      const url = btn.href;             // remember where we were going
+
+      for (let i = 0; i < 20; i++) {
+        const s = document.createElement('span');
+        s.className = 'sparkle';
+        s.textContent = '✦';
+        s.style.left = e.clientX + 'px';
+        s.style.top = e.clientY + 'px';
+        s.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+        const angle = Math.random() * Math.PI * 2;      // random direction
+        const dist = 40 + Math.random() * 60;           // random distance
+        s.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+        s.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+
+        document.body.appendChild(s);
+        s.addEventListener('animationend', () => s.remove());
+      }
+
+      setTimeout(() => { window.location.href = url; }, 1000);
+    });
+  });
+</script>
