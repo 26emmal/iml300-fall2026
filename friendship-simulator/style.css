@@ -160,7 +160,7 @@ dialog.popup small {
 .character {
   width: 100%;
   max-width: 500px;
-  margin-left: 150px; /* Adjust this number to move it right by exact pixels */
+  margin-left: 250px; /* Adjust this number to move it right by exact pixels */
   margin-right: auto;
 }
 
