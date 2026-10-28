@@ -160,12 +160,12 @@ dialog.popup small {
 .character {
   width: 100%;
   max-width: 500px;
-  margin-left: 250px; /* Adjust this number to move it right by exact pixels */
+  margin-left: 350px; /* Adjust this number to move it right by exact pixels */
   margin-right: auto;
 }
 
 .character img {
-  width: 100%;
+  width: 105%;
   height: auto;
   display: block;
   filter:blur(1px);
