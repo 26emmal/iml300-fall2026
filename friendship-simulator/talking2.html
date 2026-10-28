@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Title</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+    </head>
+    <body style="background-image: url('assets/animehallway.jpg'); background-size: cover; height: 100vh;">
+    <div class=glass-card></div>
+    <div class="sunlight"></div>
+    <div class="particles"></div>
+    <div class="centeredright">
+        <div class="creditsbox">
+            60 credits
+        </div>
+    </div>
+        
+    <div class="character">
+     <img src="assets/girlanime.webp"/> 
+    </div>
+        
+     <div class="widget-bottom">
+        <div class="fade-container">
+        <Br>   
+            <div class = "bottomrow">
+                <div class="namebox">
+                    <h2>Sora</h2>
+                </div>
+            </div>
+         </div>   
+        <div class=rectangle-text>
+            <div class="text">
+                <div class="typewriter type-1">
+                    <h1>I’m just so glad we have a friendship where we can be </h1>
+                 </div>
+
+                <div class="typewriter type-2">
+                     <h1> candid with each other. I’d trust you with anything.</h1>
+                </div>
+            </div>
+            <a href="talking3.html" class="triangle-down"></a>
+        </div>
+    </div>
+    </body>
+</html>
+
+<span id="accepted"></span>
+
+<div id="cookie-banner">
+  <!-- View 2: manage preferences -->
+  <section id="view-manage">
+    <h3>Cookie preferences</h3>
+    <label class="row">Necessary <input class="switch" type="checkbox" checked disabled></label>
+    <label class="row">Performance <input class="switch" type="checkbox" checked></label>
+    <label class="row">Functional <input class="switch" type="checkbox" checked></label>
+    <a class="btn2" href="#accepted">Save and accept</a>
+
+    <div class="reject-wrap">
+      <input type="checkbox" id="bubble-x">
+      <a class="reject" href="#view-shame">reject all</a>
+      <div class="bubble">
+        Can I help you understand our cookie policy?
+        <label for="bubble-x">x</label>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-shame">
+    <h3>Are you sure you want to miss out?</h3>
+    <p>Most users click consent for a better experience.</p>
+    <a class="btn2" href="#accepted">Accept all</a>
+    <a class="small-link" href="#accepted">Accept necessary only</a>
+  </section>
+
+  <!-- View 1: first view (must come LAST) -->
+  <section id="view-main">
+    <h3>We value your privacy</h3>
+    <p>We use cookies to improve your experience and show you personalized content.</p>
+    <a class="btn2" href="#accepted">Accept all</a>
+    <a class="btn2 outline" href="#view-shame">Accept necessary</a>
+    <a class="small-link faint" href="#view-manage">Manage preferences</a>
+  </section>
+</div>
+<script src="effects.js"></script>

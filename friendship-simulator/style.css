@@ -1,0 +1,843 @@
+
+dialog.popup {
+  width: 380px;
+  max-width: 90vw;
+  padding: 20px 24px;
+  
+  border: 1px solid #CFCFCF;
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  text-align: left;
+}
+
+dialog.popup::backdrop {
+  background: rgba(0, 0, 0, 0.45);   /* dims the game behind it */
+}
+
+dialog.popup h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+dialog.popup p {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+}
+
+dialog.popup .btn2 {
+  display: block;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+dialog.popup .decline {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #8A8A8A;
+  text-decoration: underline;
+}
+
+dialog.popup small {
+  display: block;
+  margin-top: 16px;
+  padding-top: 10px;
+  border-top: 1px solid #EEE;
+  font-size: 11px;
+  color: #AAA;
+}
+
+
+.fade-container {
+  position: relative; /* Crucial for absolute alignment */
+  width: 100%;
+  height: 250px; /* Reduced slightly so it fits neatly above the text box */
+  overflow: hidden;
+
+  /* --- ADD THESE FLEXBOX LINES TO PUSH BUTTONS TO THE BOTTOM --- */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Aligns buttons to the bottom edge */
+  padding-bottom: 15px;      /* Spacing between lowest button & pink box */
+  z-index: 1;
+}
+
+/* Creates the white gradient overlay layer */
+.fade-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%; /* Controls how high the fade reaches up */
+  
+  /* Standard modern syntax: fades from fully transparent white to solid white */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  
+  pointer-events: none; /* Allows users to click on text/links through the fade */
+}
+
+.bottomrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  align-items: flex-end; /* 🔑 Anchors both namebox and buttons to the bottom edge */
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px; /* 🔑 Handles button spacing cleanly without extra height bugs */
+}
+
+.namebox {
+  margin:0;
+  background-color:#ffe4fa; 
+  justify-content:center;
+  display: flex;
+  align-items: center;
+  width:200px;
+  height:50px;
+  border-radius: 20px;
+   margin-right: auto; /* Pushes the element to the left */
+  margin-left: 0;
+  outline: 3px solid #ffb3f1;
+  z-index:2;     
+  padding: 5px 10px;            /* Adds inner spacing around text */
+  
+  /* Text Styling */
+  color: black;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: "Single Day", cursive;
+  font-size: 25px;
+  /*font-weight: bold;*/
+  text-align: center; 
+}
+
+.namebox h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;          /* Centers text vertically */
+  min-height: 100vh;              /* Forces container to take full screen height */
+  text-align: center;             /* Ensures multi-line text is centered within itself */
+}
+
+
+.centeredright {
+  font-family: monospace;
+  font-size: 30px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: right;
+  /*flex-direction: column;
+  /*align-items: center;          /* Centers text vertically */
+ /* min-height: 100vh;              /* Forces container to take full screen height */
+  text-align: center;             
+  bottom:0;
+  z-index: 2;
+}
+
+.character {
+  width: 100%;
+  max-width: 500px;
+  margin-right:auto;
+}
+
+.character img {
+  width: 250%;
+  height: auto;
+  display: block;
+}
+
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  backdrop-filter: blur(5px);                  /* Blurs the content behind the card */
+  -webkit-backdrop-filter: blur(2px);          /* Safari support */
+  padding: 30px;
+  color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* Functions like background-size: cover for elements */
+  z-index: -1;  
+  z-index: -1;   
+}
+
+.creditsbox {
+  margin:0;
+  padding:0;
+  background: linear-gradient(to top, #fb94e9, #ffccf6); 
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  display:flex;
+  width:200px;
+  height:50px;
+  border-radius: 20px;
+   z-index:2;   
+}
+
+.rectangle-text {
+  margin:0;
+  padding: 0;
+  width: 100%;       /* 100% of the parent container's width */
+  height: 20vh;      /* 25% of the screen height */
+  background: linear-gradient(to top, #fb94e9, #ffdbf9); 
+  justify-content: center;
+  align-items:center;
+  display: flex;         /* Enables flexbox */
+  flex-direction: row;   /* Puts items side by side (default) */
+  gap: 16px;
+}
+
+input[type="checkbox"] {
+  /* Changes the color of the checkbox when checked */
+  accent-color: #2d5e9e; 
+  
+  /* Make it larger if needed */
+  /*width: 1.5rem;
+  height: 2rem;*/
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+/*gap: 3px;/*Spacing between lines */
+  margin-bottom: 20px; 
+  margin-top: 20px; 
+}
+
+/* Keeps the checkbox on the left and aligns the text nicely */
+.checkbox-line {
+  display: flex;
+  align-items: flex-start; /* Aligns checkbox to the top if text wraps */
+  gap: 8px; /* Spacing between checkbox and its text */
+  cursor: pointer;
+  margin-bottom: 8px; 
+}
+
+.widget-bottom {
+  text-align: center;     
+  position: fixed;
+  bottom: 0;
+  padding:100;
+  left: 0;
+  width: 100%; /* Optional: forces it to span the full screen width */
+  z-index: 2;
+}
+
+.sunlight {
+  position: fixed;
+  inset: -20%;           /* oversized, so drifting never reveals an edge */
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(circle at 85% 0%, rgba(255, 244, 205, 0.55), transparent 55%),
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 90px,
+      rgba(255, 246, 210, 0.16) 130px,
+      transparent 210px
+    );
+  animation: sunDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes sunDrift {
+  from { transform: translateX(-4%); opacity: 0.55; }
+  to   { transform: translateX(4%);  opacity: 0.95; }
+}
+
+.particles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  top: -10px;          /* was bottom: -10px */
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  animation: drift linear infinite;
+}
+
+@keyframes drift {
+  0%   { transform: translate(0, 0);              opacity: 0; }
+  10%  {                                          opacity: var(--o); }
+  90%  {                                          opacity: var(--o); }
+  100% { transform: translate(var(--dx), 110vh);  opacity: 0; }   /* was -110vh */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sunlight, .particle { animation: none; }
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 25px solid #F527D6;
+  position: absolute;
+  right: 50px;  /* adjust spacing from right edge */
+  bottom:100px;
+  cursor: pointer;               /* Ensures the pointer hand appears on hover */
+  transition: border-top 0.2s ease;
+  animation: bobbing 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes bobbing {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+.triangle-down:hover {
+  border-top: 25px solid white;     
+}
+
+/* Click/Active State */
+.triangle-down:active {
+  border-top: 15px solid white;     /* Darkens color further when actively clicked */
+  transform: scale(0.98);        /* Slightly shrinks button for a pressed effect */
+}
+
+/* DEMO-SPECIFIC STYLES */
+.typewriter h1 {
+  color: black;
+  font-family: monospace;
+  font-size:22px;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+ /*border-right: .15em solid black; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .05em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+.type-1 h1 {
+  animation-delay: 0s; 
+}
+
+.type-2 h1 {
+  width: 0; 
+  animation-delay: 3s; 
+
+  animation-fill-mode: both;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+/*@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: transparent }
+}*/
+
+.open-btn {
+  /* Layout & Sizing */
+  display: inline-block;          /* Allows top/bottom padding and custom width */
+  padding: 12px 24px;            /* Adds inner spacing around text */
+  
+  /* Text Styling */
+  color: #ffffff;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: "Single Day", cursive;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;            /* Centers text if button is wider than text */
+  
+  /* Background & Borders */
+  background-color: #f527ba;     /* Core button background color */
+  border: none;                  /* Removes any default borders */
+  border-radius: 6px;            /* Gives the button smooth, rounded corners */
+  
+  /* Interactivity */
+  cursor: pointer;               /* Ensures the pointer hand appears on hover */
+  transition: background-color 0.2s ease; /* Smoothly transitions color states */
+}
+/* Hover State */
+.open-btn:hover {
+  background-color: #c9209f;     /* Darkens background color when hovered over */
+}
+
+/* Click/Active State */
+.open-btn:active {
+  background-color: #a11a75;     /* Darkens color further when actively clicked */
+  transform: scale(0.98);        /* Slightly shrinks button for a pressed effect */
+}
+.close-btn {
+  /* Layout & Sizing */
+  display: inline-block;          /* Allows top/bottom padding and custom width */
+  padding: 12px 24px;            /* Adds inner spacing around text */
+  
+  /* Text Styling */
+  color: #ffffff;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: "Single Day", cursive;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;            /* Centers text if button is wider than text */
+  
+  /* Background & Borders */
+  background-color: #f527ba;     /* Core button background color */
+  border: none;                  /* Removes any default borders */
+  border-radius: 6px;            /* Gives the button smooth, rounded corners */
+  
+  /* Interactivity */
+  cursor: pointer;               /* Ensures the pointer hand appears on hover */
+  transition: background-color 0.2s ease; /* Smoothly transitions color states */
+}
+/* Hover State */
+.close-btn:hover {
+  background-color: #c9209f;     /* Darkens background color when hovered over */
+}
+
+/* Click/Active State */
+.close-btn:active {
+  background-color: #a11a75;     /* Darkens color further when actively clicked */
+  transform: scale(0.98);        /* Slightly shrinks button for a pressed effect */
+}
+
+.open-btn2 {
+  /* Layout & Sizing */
+   display: block;            /* full width instead of inline-block */
+  padding: 10px;             /* overrides btn2's bigger padding */
+  font-size: 18px;           /* overrides btn2's 20px */
+  border-radius: 2px;        /* squarer = more corporate than the game's 6px */
+  margin-top: 6px;
+  
+  color: #ffffff;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;           /* Centers text if button is wider than text */
+  
+  /* Background & Borders */
+  background-color: #2e72cb;     /* Core button background color */
+  border: none;                  /* Removes any default borders */
+  
+  /* Interactivity */
+  cursor: pointer;               /* Ensures the pointer hand appears on hover */
+  transition: background-color 0.2s ease; /* Smoothly transitions color states */
+}
+/* Hover State */
+.open-btn2:hover {
+  background-color: #174e96;     /* Darkens background color when hovered over */
+}
+
+/* Click/Active State */
+.open-btn2:active {
+  background-color: #174e96;     /* Darkens color further when actively clicked */
+  transform: scale(0.98);        /* Slightly shrinks button for a pressed effect */
+}
+.close-btn2 {
+  /* Layout & Sizing */
+  display: block;            /* full width instead of inline-block */
+  padding: 10px;             /* overrides btn2's bigger padding */
+  font-size: 18px;           /* overrides btn2's 20px */
+  border-radius: 2px;        /* squarer = more corporate than the game's 6px */
+  margin-top: 6px;
+  
+  color: #ffffff;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;           /* Centers text if button is wider than text */
+  
+  /* Background & Borders */
+  background-color: #2e72cb;     /* Core button background color */
+  border: none;                  /* Removes any default borders */
+  
+  /* Interactivity */
+  cursor: pointer;               /* Ensures the pointer hand appears on hover */
+  transition: background-color 0.2s ease; /* Smoothly transitions color states */
+}
+/* Hover State */
+.close-btn2:hover {
+  background-color: #174e96;     /* Darkens background color when hovered over */
+}
+
+/* Click/Active State */
+.close-btn2:active {
+  background-color: #174e96;     /* Darkens color further when actively clicked */
+  transform: scale(0.98);        /* Slightly shrinks button for a pressed effect */
+}
+
+button {
+  font-size:16px;
+}
+
+.btn {
+  /* Layout & Sizing */
+  display: inline-block;          /* Allows top/bottom padding and custom width */
+  padding: 12px 24px;            /* Adds inner spacing around text */
+  
+  /* Text Styling */
+  color: #ffffff;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: "Single Day", cursive;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;            /* Centers text if button is wider than text */
+  
+  /* Background & Borders */
+  background-color: #f527ba;     /* Core button background color */
+  border: none;                  /* Removes any default borders */
+  border-radius: 6px;            /* Gives the button smooth, rounded corners */
+  
+  /* Interactivity */
+  cursor: pointer;               /* Ensures the pointer hand appears on hover */
+  transition: background-color 0.2s ease; /* Smoothly transitions color states */
+}
+
+/* Hover State */
+.btn:hover {
+  /*hi*/
+  background-color: #c9209f;     /* Darkens background color when hovered over */
+}
+
+/* Click/Active State */
+.btn:active {
+  background-color: #a11a75;     /* Darkens color further when actively clicked */
+  transform: scale(0.98);        /* Slightly shrinks button for a pressed effect */
+}
+
+.btn2 {
+  /* Layout & Sizing */
+  display: block;            /* full width instead of inline-block */
+  padding: 10px;             /* overrides btn2's bigger padding */
+  font-size: 18px;           /* overrides btn2's 20px */
+  border-radius: 2px;        /* squarer = more corporate than the game's 6px */
+  margin-top: 6px;
+  
+  color: #ffffff;                /* Sets text color to white */
+  text-decoration: none;         /* Removes default underline from the link */
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;           /* Centers text if button is wider than text */
+  
+  /* Background & Borders */
+  background-color: #2e72cb;     /* Core button background color */
+  border: none;                  /* Removes any default borders */
+  
+  /* Interactivity */
+  cursor: pointer;               /* Ensures the pointer hand appears on hover */
+  transition: background-color 0.2s ease; /* Smoothly transitions color states */
+}
+
+/* Hover State */
+.btn2:hover {
+  /*hi*/
+  background-color: #174e96;     /* Darkens background color when hovered over */
+}
+
+/* Click/Active State */
+.btn2:active {
+  background-color: #174e96;     /* Darkens color further when actively clicked */
+  transform: scale(0.98);        /* Slightly shrinks button for a pressed effect */
+}
+
+
+/*cookie banner stuff*/
+/* ---------- the banner shell ---------- */
+#cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  z-index: 1000;
+  background: #fff;
+  border: 1px solid #CFCFCF;
+  padding: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #222;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  animation: cookie-in 0.4s ease-out 1s both;   /* pops up after 3 seconds */
+}
+
+@keyframes cookie-in {
+  from { opacity: 0; transform: translateY(20px); visibility: hidden; }
+  to   { opacity: 1; transform: none;             visibility: visible; }
+}
+
+#cookie-banner h3 { margin: 0 0 4px; font-size: 13px; font-weight: 700; }
+#cookie-banner p  { margin: 0 0 6px; color: #555; }
+
+/* ---------- view switching ---------- */
+#view-manage,
+#view-shame { display: none; }
+
+#view-manage:target,
+#view-shame:target { display: block; }
+
+#view-manage:target ~ #view-main,
+#view-shame:target ~ #view-main { display: none; }
+
+#accepted { position: fixed; }
+#accepted:target ~ #cookie-banner { display: none; }
+
+/* ---------- buttons: reuse btn2, shrunk to banner size ---------- */
+#cookie-banner .btn2 {
+  display: block;            /* full width instead of inline-block */
+  padding: 10px;             /* overrides btn2's bigger padding */
+  font-size: 13px;           /* overrides btn2's 20px */
+  border-radius: 2px;        /* squarer = more corporate than the game's 6px */
+  margin-top: 6px;
+}
+
+/* the weaker "Accept necessary" button */
+#cookie-banner .btn2.outline {
+  background: transparent;
+  color: #444;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 8px;
+  border: 1px solid #999;
+}
+#cookie-banner .btn2.outline:hover { background: #F1F1F1; }
+
+/* tiny text links */
+#cookie-banner .small-link {
+  display: block;
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 10px;
+  font-size: 11px;
+  color: #999;
+}
+#cookie-banner .small-link.faint { color: #AAA; }
+
+/* ---------- toggle switches ---------- */
+#cookie-banner .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+#cookie-banner .switch {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 28px;
+  height: 14px;
+  border-radius: 7px;
+  background: #C9CDD3;
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+#cookie-banner .switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.15s;
+}
+
+#cookie-banner .switch:checked { background: #2B6CDE; }
+#cookie-banner .switch:checked::after { left: 16px; }
+#cookie-banner .switch:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- tiny "reject all" + the bubble covering it ---------- */
+#cookie-banner .reject-wrap {
+  position: relative;
+  margin-top: 14px;
+  text-align: center;
+}
+
+#cookie-banner .reject {
+  font-size: 10px;
+  color: #C8C8C8;
+  text-decoration: underline;
+}
+
+#cookie-banner .bubble {
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translateX(-50%);
+  width: 170px;
+  z-index: 2;                /* on top of "reject all", so clicks hit the bubble */
+  background: #F1F3F6;
+  border: 1px solid #B8C2D6;
+  border-radius: 12px;
+  padding: 5px 10px;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #333;
+  text-align: left;
+}
+
+#cookie-banner .bubble label { cursor: pointer; color: #888; margin-left: 4px; }
+
+#cookie-banner .reject-wrap input { display: none; }
+/* clicking the x checks the hidden box, which hides the bubble */
+#bubble-x:checked ~ .bubble { display: none; }
+
+
+
+
+
+#credits-banner {
+  position: fixed;
+  inset: 0;               /* top, right, bottom, left: all 0 */
+  margin: auto;           /* auto margins center it in that space */
+  width: 360px;
+  height: fit-content; 
+  transform: translate(-50%, -50%);     /* shift back by half its own size */
+  z-index: 1000;
+  background: #fff;
+  border: 1px solid #CFCFCF;
+  padding: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #222;
+  animation: cookie-in 0.4s ease-out 1s both;   /* pops up after 3 seconds */
+}
+
+#credits-banner {
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.55);   /* replaces your old box-shadow */
+}
+
+@keyframes cookie-in {
+  from { opacity: 0; transform: translateY(20px); visibility: hidden; }
+  to   { opacity: 1; transform: none;             visibility: visible; }
+}
+
+#credits-banner h3 { margin: 0 0 4px; font-size: 22px; font-weight: 700; }
+#credits-banner p  { margin: 0 0 6px; font-size:15px; color: #555; margin-bottom:20px;}
+
+#disappear { position: fixed; }
+#disappear:target ~ #credits-banner p { display: none; }
+
+/* ---------- buttons: reuse btn2, shrunk to banner size ---------- */
+#credits-banner .btn2 {
+  display: block;            /* full width instead of inline-block */
+  padding: 10px;             /* overrides btn2's bigger padding */
+  font-size: 18px;           /* overrides btn2's 20px */
+  border-radius: 2px;        /* squarer = more corporate than the game's 6px */
+  margin-top: 6px;
+}
+/* tiny text links */
+#credits-banner .small-link {
+  display: block;
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #999;
+}
+#credits-banner .small-link.faint { color: #AAA; }
+
+
+
+
+.close-toggle { display: none; }
+
+/* ---------- shared X button ---------- */
+.x {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #888;
+  font: 18px/24px Arial, sans-serif;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+}
+.x:hover { color: #222; }
+
+/* ---------- popup 1: centered image ---------- */
+.ad-popup {
+  position: fixed;
+  inset: 0;                  /* top/right/bottom/left: 0 ... */
+  margin: auto;              /* ...plus auto margins = centered */
+  width: min(480px, 90vw);
+  height: fit-content;       /* otherwise it stretches to full height */
+  z-index: 1100;
+  background: #fff;
+  border: 1px solid #CFCFCF;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.45);   /* dims everything behind it */
+  animation: ad-in 0.3s ease-out 4s both;          /* appears after 5 seconds */
+}
+.ad-popup img { display: block; width: 100%; }
+
+@keyframes ad-in {
+  from { opacity: 0; transform: scale(0.92); visibility: hidden; }
+  to   { opacity: 1; transform: scale(1);    visibility: visible; }
+}
+
+/* ---------- popup 2: bottom banner ---------- */
+.ad-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 900;
+  background: #E4E7EB;
+  animation: rise-up 0.5s ease-out 3s both;        /* rises after 9 seconds */
+}
+.ad-bar-inner {
+  position: relative;
+  max-width: 728px;
+  margin: 0 auto;
+}
+.ad-bar img { display: block; width: 100%; }
+
+@keyframes rise-up {
+  from { transform: translateY(100%); visibility: hidden; }
+  to   { transform: translateY(0);    visibility: visible; }
+}
+
+/* ---------- closing ---------- */
+#img-close:checked ~ .ad-popup,
+#bar-close:checked ~ .ad-bar { display: none; }
