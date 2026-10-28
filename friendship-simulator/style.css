@@ -164,7 +164,7 @@ dialog.popup small {
 }
 
 .character img {
-  width: 250%;
+  width: 100%;
   height: auto;
   display: block;
 }
