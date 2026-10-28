@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Title</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+    </head>
+    <body style="background-image: url('assets/animehallway.jpg'); background-size: cover; height: 100vh;">
+    <div class=glass-card></div>
+    <div class="sunlight"></div>
+    <div class="particles"></div>
+    <div class="centeredright">
+        <div class="creditsbox">
+            0 credits
+        </div>
+    </div>
+        
+    <div class="character">
+     <img src="assets/girlanime.webp"/> 
+    </div>
+        
+     <div class="widget-bottom">
+        <div class="fade-container">
+        <div class = "bottomrow">
+            <div class="namebox">
+                <h2>Sora</h2>
+            </div>
+        </div>
+    
+<dialog id="shame-dialog" class="popup">
+  <h2 style="font-size:18px">Do you really want to say this?</h2>
+  <p>Sora trusts that you are her greatest friend. Declining will break her heart. </p>
+  <a class="open-btn2" href="talking4.html">No, I'm a good person [20 credits]</a>
+  <a class="decline" id="decline-link" href="#">Yes, I don't value this friendship</a>
+  <small>Credits are non-refundable. See Terms of Service.</small>
+</dialog>
+            
+<dialog id="shame-dialog-2" class="popup">
+  <h2 style="font-size:18px">Don't you want to be a good friend?</h2>
+  <p>Sora loves and cherishes your friendship. Be a good friend to Sora.</p>
+  <a class="open-btn2" href="talking4.html">Ok, I'm a good person [20 credits]</a>
+  <small>Credits are non-refundable. See Terms of Service.</small>
+</dialog>
+
+<script>
+  const dialog1 = document.getElementById('shame-dialog');
+  const dialog2 = document.getElementById('shame-dialog-2');
+  const declineLink = document.getElementById('decline-link');
+
+  // "Well… I don't know..." opens the first popup
+  document.querySelectorAll('.open-btn').forEach(btn => {
+    btn.addEventListener('click', () => dialog1.showModal());
+  });
+
+  // "Yes, I don't value this friendship" closes popup 1 and opens popup 2
+  declineLink.addEventListener('click', (e) => {
+    e.preventDefault();        // stops the link from going anywhere
+    dialog1.close();
+    dialog2.showModal();
+  });
+  // Esc normally closes a modal dialog, which would be an escape route
+  document.querySelectorAll('dialog').forEach(d => {
+    d.addEventListener('cancel', e => e.preventDefault());
+  });
+</script>   
+            
+            
+    <script src="effects.js"></script>
+    </div>
+         
+        <div class=rectangle-text>
+            <div class="text">
+                <div class="typewriter type-1">
+                    <h1>Well, I was thinking we could...</h1>
+                 </div>
+                <a class="triangle-down"></a>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+
+<span id="accepted"></span>
+
+<div id="credits-banner">
+  <!-- View 2: manage preferences -->
+
+  <!-- View 1: first view (must come LAST) -->
+  <section id="view-main">
+    <h3> You’re out of free credits!</h3>
+    <p>Purchase a premium subscription plan to continue the conversation. </p>
+    <a class="btn2" href="#accepted">Select subscription</a>
+    <a class="small-link faint" href="beginning.html">No, thanks</a>
+  </section>
+</div>

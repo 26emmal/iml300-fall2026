@@ -4,9 +4,15 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="style.css" />
         <title>Title</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+
     </head>
     <body style="background-image: url('assets/animehallway.jpg'); background-size: cover; height: 100vh;">
     <div class=glass-card></div>
+    <div class="sunlight"></div>
+        <div class="particles"></div>
     <div class="centeredright">
     <div class="creditsbox">
             60 credits
@@ -35,39 +41,30 @@
             </div>
         </div>
         
-        <Br>
-    
-        <dialog id="my-dialog">
-          <h1 style="font-family: sans-serif">Sign up to continue chatting!</h1>
+        <dialog id="my-dialog" class="popup">
+          <h1 style="font-family: sans-serif;font-size:25px">Sign up to continue chatting!</h1>
                 <label for="username" style="font-family: sans-serif">Username:</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username">
-                <br>
-                <br>
-                <br>
+
                 <div class ="checkbox-group">
                     <label class="checkbox-line">
                         <input type="checkbox" id="myCheckbox" checked>
                         <span style="font-family: sans-serif" for="myCheckbox">Sign me up for the mailing list! </span>
                     </label>
-                    <br>
                     <label class="checkbox-line">
                         <input type="checkbox" id="myCheckbox2" checked>
                         <span style="font-family: sans-serif" for="myCheckbox">Allow third-party partners to monitor chat logs.</span>
                     </label>
-                    <br>
                     <label class="checkbox-line">
                         <input type="checkbox" id="myCheckbox3" checked>
                         <span style="font-family: sans-serif" for="myCheckbox">I would like to donate $10/month to the site.</span>
                     </label>
-                    <br>
                     <label class="checkbox-line">
                         <input type="checkbox" id="myCheckbox4" checked>
                         <span style="font-family: sans-serif" for="myCheckbox">I do not wish to unsubscribe from daily $4.99 Emotional Maintenance fee.</span>
                     </label>
                 </div>
-                <br>
-                <br>
-                <a href="talking2.html" id="close-btn" class="close-btn">Continue</a>
+                <a href="talking2.html" id="close-btn2" class="close-btn2">Continue</a>
         </dialog>
 
         <script>
@@ -82,6 +79,7 @@
 
       closeBtn.addEventListener('click', () => dialog.close());
          </script>
+        <script src="effects.js"></script>
     </div>
          
          
