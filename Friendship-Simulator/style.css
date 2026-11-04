@@ -593,7 +593,7 @@ button {
   line-height: 1.5;
   color: #222;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-  animation: cookie-in 0.4s ease-out 1s both;   /* pops up after 3 seconds */
+  animation: cookie-in 0.4s ease-out 3s both;   /* pops up after 3 seconds */
 }
 
 @keyframes cookie-in {

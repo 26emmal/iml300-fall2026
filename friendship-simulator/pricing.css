@@ -1,0 +1,112 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #F5F6F8;
+  color: #222;
+}
+.timer-bar {
+  background: #D7263D;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+}
+.timer-bar strong { font-variant-numeric: tabular-nums; }
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 24px;
+  text-align: center;
+}
+h1 { font-size: 26px; margin: 0 0 6px; }
+.sub { color: #666; font-size: 14px; margin: 0 0 22px; }
+
+.wrap > input { display: none; }
+
+.billing {
+  display: inline-flex;
+  background: #fff;
+  border: 1px solid #CFCFCF;
+  border-radius: 99px;
+  padding: 3px;
+  margin-bottom: 34px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 16px;
+  align-items: start;
+  text-align: left;
+    padding:20px;
+}
+.card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #D9D9DE;
+  border-radius: 4px;
+  padding: 20px;
+}
+.card h2 { margin: 0 0 4px; font-size: 16px; }
+.price { font-size: 28px; font-weight: 700; margin: 6px 0 2px; }
+.price small { font-size: 13px; font-weight: 400; color: #666; }
+.old {
+  font-size: 15px;
+  font-weight: 400;
+  color: #999;
+  text-decoration: line-through;
+  margin-right: 4px;
+}
+.fine { font-size: 11px; color: #C4C4C8; margin: 0 0 4px; }   /* the hidden "billed annually" */
+.card ul {
+  margin: 12px 0 18px;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* buttons reuse your blue btn2, resized for the cards */
+.card .btn2 {
+  display: block;
+  text-align: center;
+  padding: 11px;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.card.free { background: #EEEEF1; color: #8A8A94; }
+.card.free ul { color: #8A8A94; }
+.decline-link {
+  display: block;
+  text-align: center;
+  font-size: 11px;
+  color: #999;
+  text-decoration: underline;
+}
+
+.card.popular {
+  border: 2px solid #2B6CDE;
+  padding-top: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2B6CDE;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 99px;
+}
+
+.card.vip { background: #FFFBEA; border: 2px solid #C9A227; }
+.card.vip .btn2 { background: #C9A227; }
+.card.vip .btn2:hover { background: #A8871E; }
+
+.footnote { font-size: 10px; color: #D0D0D4; margin: 10px 0 0; }

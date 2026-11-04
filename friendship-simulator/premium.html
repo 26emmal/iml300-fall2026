@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Choose your plan</title>
+  <link rel="stylesheet" href="style.css" />   
+  <link rel="stylesheet" href="pricing.css" />
+</head>
+<body>
+
+  <div class="timer-bar">Limited-time offer expires in <strong id="timer">04:59</strong></div>
+
+  <div class="wrap">
+    <h1>Choose your closeness with Sora</h1>
+    <p class="sub">Unlock the friendship you deserve.</p>
+
+    <div class="cards">
+
+      <!-- Friend -->
+      <div class="card free">
+        <h2>Friend</h2>
+        <div class="price">$2.99<small>/mo</small></div>
+        <ul>
+          <li>Limited replies</li>
+          <li>Sora may forget you</li>
+        <li>Are you sure you want this?</li>
+        </ul>
+        <a class="decline-link" href="ending-free.html">I don't want to be close to Sora</a>
+      </div>
+
+      <!-- Bestie Plus -->
+      <div class="card popular">
+        <div class="badge">Most popular</div>
+        <h2>Bestie Plus</h2>
+        <div class="price">
+          <span class="annual-only"><span class="old">$19.99</span>$9.99</span><small>/mo</small>
+        </div>
+        <p class="fine">
+          <span class="annual-only">*Billed annually at $119.88. Renews automatically.</span>
+        </p>
+        <ul>
+          <li>Get to be Sora's number one friend!</li>
+            <li>Sora cares about you like no other.</li>
+            <li>Experience true friendship, free of ads!</li>
+        </ul>
+        <a class="btn2" href="ending-plus.html">Get Bestie Plus</a>
+      </div>
+
+      <!-- Soulmate VIP -->
+      <div class="card vip">
+        <h2>Soulmate VIP</h2>
+        <div class="price">$99.99<small>/mo</small></div>
+        <ul>
+          <li>Sora is yours forever</li>
+          <li>Sora's heart belongs to you, and only you</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <a class="btn2" href="ending-vip.html">Claim your soulmate</a>
+      </div>
+
+    </div>
+
+    <p>Join the 37 people chatting with Sora right now!</p>
+  </div>
+
+  <script>
+    // fake countdown: loops back to 4:59 forever
+    let t = 299;
+    const el = document.getElementById('timer');
+    setInterval(() => {
+      t = t > 0 ? t - 1 : 299;
+      el.textContent = '0' + Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0');
+    }, 1000);
+  </script>
+</body>
+</html>
