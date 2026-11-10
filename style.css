@@ -31,7 +31,6 @@ p {
 }
 
 p:hover {
-  /*   transform: rotate(5deg); */
   color:black;
   /*letter-spacing: 1em*/
 }
