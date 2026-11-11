@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EasyRead – PDFs made easier to read</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+ <h1>📖 EasyRead</h1>
+ <p class="sub">🔒 Stays on your device</p>
+</header>
+<main>
+ <div id="drop" role="button" tabindex="0" aria-label="Choose a PDF to upload">
+  <span class="big" aria-hidden="true">📄⬆️</span><strong>Add a PDF</strong>
+  <input id="file" type="file" accept="application/pdf,.pdf" hidden>
+ </div>
+ <div class="layout">
+  <section class="card" aria-label="Reading settings">
+   <h2 class="sr">Reading settings</h2>
+   <label for="font"><span class="ic">🔤</span><span class="cap">Font</span></label>
+   <select id="font">
+    <option value="OpenDyslexic">OpenDyslexic (made for dyslexia)</option>
+    <option value="Lexend">Lexend (designed for readability)</option>
+    <option value="Atkinson Hyperlegible">Atkinson Hyperlegible</option>
+    <option value="Verdana">Verdana</option>
+    <option value="Arial">Arial</option>
+    <option value="Comic Sans MS">Comic Sans</option>
+   </select>
+   <label for="size"><span class="ic">🔍</span><span class="cap">Size</span><span id="v-size" class="sr"></span></label>
+   <input type="range" id="size" min="16" max="40" step="1">
+   <label for="ls"><span class="ic">🅰️↔</span><span class="cap">Letters</span><span id="v-ls" class="sr"></span></label>
+   <input type="range" id="ls" min="0" max="0.25" step="0.01">
+   <label for="ws"><span class="ic">💬↔</span><span class="cap">Words</span><span id="v-ws" class="sr"></span></label>
+   <input type="range" id="ws" min="0" max="0.6" step="0.02">
+   <label for="lh"><span class="ic">☰↕</span><span class="cap">Lines</span><span id="v-lh" class="sr"></span></label>
+   <input type="range" id="lh" min="1.4" max="2.8" step="0.1">
+   <label for="width"><span class="ic">📏</span><span class="cap">Width</span><span id="v-width" class="sr"></span></label>
+   <input type="range" id="width" min="30" max="80" step="2">
+   <label><span class="ic">🎨</span><span class="cap">Color</span></label>
+   <div class="swatches" id="themes"></div>
+   <label class="tog" title="Short chunks"><input type="checkbox" id="chunk"><span class="ic">✂️</span><span class="cap">Short bits</span></label>
+   <label class="tog" title="Reading ruler"><input type="checkbox" id="rulerOn"><span class="ic">📍</span><span class="cap">Ruler</span></label>
+   <div style="margin-top:14px"><button class="ib" id="reset" type="button" aria-label="Reset settings"><span class="ic">↺</span><span class="cap">Reset</span></button></div>
+  </section>
+  <section aria-label="Reader">
+   <div class="bar">
+    <button class="ib main" id="speak" type="button" aria-label="Read aloud"><span class="ic">🔊</span><span class="cap">Listen</span></button>
+    <button class="ib" id="stop" type="button" aria-label="Stop"><span class="ic">⏹️</span><span class="cap">Stop</span></button>
+    <button class="ib" id="pasteBtn" type="button" aria-label="Paste text instead"><span class="ic">📋</span><span class="cap">Paste</span></button>
+    <span id="status" role="status" aria-live="polite"></span>
+   </div>
+   <div id="paste"><textarea id="pasteText" rows="6" placeholder="Paste any text here…"></textarea>
+    <button class="ib main" id="usePaste" type="button" aria-label="Show this text"><span class="ic">✔️</span><span class="cap">Show</span></button></div>
+   <div id="stage">
+    <div id="reader"><div class="inner" id="content"><p class="empty" style="font-size:2.4rem">📄⬆️ → 📖</p></div><div id="ruler"></div></div>
+   </div>
+  </section>
+ </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const THEMES={cream:['#faf3dd','#222','Cream'],blue:['#dbeaf7','#1d2a35','Pale blue'],green:['#e1f0dc','#1f2d1f','Pale green'],peach:['#fde5d4','#2d2018','Peach'],white:['#ffffff','#111111','White'],dark:['#1c1f24','#e8e4d8','Dark']};
+const DEF={font:'OpenDyslexic',size:20,ls:0.05,ws:0.16,lh:1.9,width:60,theme:'cream',chunk:false,rulerOn:false};
+let S={...DEF};
+try{Object.assign(S,JSON.parse(localStorage.getItem('easyread')||'{}'))}catch(e){}
+let paras=[],speaking=false;
+
+function save(){try{localStorage.setItem('easyread',JSON.stringify(S))}catch(e){}}
+function apply(){
+  const r=$('#reader'),t=THEMES[S.theme]||THEMES.cream;
+  r.style.setProperty('--ff',`'${S.font}'`);
+  r.style.setProperty('--fs',S.size+'px');
+  r.style.setProperty('--ls',S.ls+'em');
+  r.style.setProperty('--ws',S.ws+'em');
+  r.style.setProperty('--lh',S.lh);
+  r.style.setProperty('--w',S.width+'ch');
+  r.style.setProperty('--bgc',t[0]);r.style.setProperty('--fgc',t[1]);
+  $('#v-size').textContent=S.size+'px';$('#v-ls').textContent=S.ls;$('#v-ws').textContent=S.ws;
+  $('#v-lh').textContent=S.lh;$('#v-width').textContent=S.width+' characters';
+  ['font','size','ls','ws','lh','width'].forEach(k=>$('#'+k).value=S[k]);
+  $('#chunk').checked=S.chunk;$('#rulerOn').checked=S.rulerOn;
+  $('#ruler').style.display=S.rulerOn?'block':'none';
+  document.querySelectorAll('.sw').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===S.theme));
+  save();
+}
+['font','size','ls','ws','lh','width'].forEach(k=>$('#'+k).addEventListener('input',e=>{S[k]=k==='font'?e.target.value:parseFloat(e.target.value);apply()}));
+$('#chunk').addEventListener('change',e=>{S.chunk=e.target.checked;render();apply()});
+$('#rulerOn').addEventListener('change',e=>{S.rulerOn=e.target.checked;apply()});
+$('#reset').addEventListener('click',()=>{S={...DEF};render();apply()});
+Object.entries(THEMES).forEach(([k,v])=>{
+  const b=document.createElement('button');b.type='button';b.className='sw';b.dataset.k=k;
+  b.style.background=v[0];b.title=v[2];b.setAttribute('aria-label',v[2]+' background');
+  b.addEventListener('click',()=>{S.theme=k;apply()});$('#themes').appendChild(b);
+});
+
+// Reading ruler
+const stage=$('#reader');
+function moveRuler(y){const rect=stage.getBoundingClientRect();$('#ruler').style.top=(y-rect.top)+'px'}
+stage.addEventListener('mousemove',e=>moveRuler(e.clientY));
+stage.addEventListener('touchmove',e=>moveRuler(e.touches[0].clientY),{passive:true});
+
+// Rendering
+function render(){
+  const c=$('#content');c.innerHTML='';
+  if(!paras.length){c.innerHTML='<p class="empty" style="font-size:2.4rem">📄⬆️ → 📖</p>';return}
+  paras.forEach(txt=>{
+    let parts=[txt];
+    if(S.chunk){
+      const s=txt.split(/(?<=[.!?])\s+/);parts=[];
+      for(let i=0;i<s.length;i+=2)parts.push(s.slice(i,i+2).join(' '));
+    }
+    parts.forEach(t=>{const p=document.createElement('p');p.textContent=t;c.appendChild(p)});
+  });
+}
+
+// PDF extraction
+function status(m){$('#status').textContent=m}
+async function extract(file){
+  status('⏳');
+  try{
+    const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
+    let out=[];
+    for(let n=1;n<=pdf.numPages;n++){
+      status(`⏳ ${n} / ${pdf.numPages}`);
+      const tc=await (await pdf.getPage(n)).getTextContent();
+      const lines=[];let cur=null;
+      for(const it of tc.items){
+        if(!it.str&&!it.hasEOL)continue;
+        const y=it.transform[5],h=it.height||Math.abs(it.transform[3])||12;
+        if(cur&&Math.abs(y-cur.y)<h*0.5){cur.t+=it.str}
+        else{cur={y,h,t:it.str};lines.push(cur)}
+      }
+      let para='',prev=null;
+      const flush=()=>{if(para.trim())out.push(para.trim());para=''};
+      lines.forEach(l=>{
+        const t=l.t.replace(/\s+/g,' ').trim();if(!t)return;
+        const newPara=prev&&(prev.y-l.y>prev.h*1.7||prev.y<l.y);
+        if(newPara)flush();
+        if(para.endsWith('-')&&/^[a-z]/.test(t))para=para.slice(0,-1)+t;
+        else para+=(para?' ':'')+t;
+        prev=l;
+      });
+      flush();
+    }
+    // merge fragments that don't end a sentence (page breaks, short lines)
+    const merged=[];
+    out.forEach(p=>{
+      const last=merged[merged.length-1];
+      if(last&&!/[.!?:”"’)]$/.test(last)&&last.length>80&&/^[a-z]/.test(p))merged[merged.length-1]=last+' '+p;
+      else merged.push(p);
+    });
+    paras=merged;render();
+    status(paras.length?`✅ ${pdf.numPages} 📄`:'');
+    if(!paras.length)$('#content').innerHTML='<p>😕 No text found. Is it a scan? Try 📋 Paste.</p>';
+  }catch(err){status('');$('#content').innerHTML='<p>😕 Can’t open this file. Try another PDF.</p>'}
+}
+
+// Upload handlers
+const drop=$('#drop'),file=$('#file');
+drop.addEventListener('click',()=>file.click());
+drop.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();file.click()}});
+file.addEventListener('change',()=>file.files[0]&&extract(file.files[0]));
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over')}));
+['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over')}));
+drop.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f&&/pdf$/i.test(f.name))extract(f)});
+
+// Paste
+$('#pasteBtn').addEventListener('click',()=>{const p=$('#paste');p.style.display=p.style.display==='block'?'none':'block'});
+$('#usePaste').addEventListener('click',()=>{
+  paras=$('#pasteText').value.split(/\n\s*\n/).map(s=>s.replace(/\s+/g,' ').trim()).filter(Boolean);
+  render();status('');
+});
+
+// Read aloud
+function speakFrom(i){
+  const ps=[...document.querySelectorAll('#content p:not(.empty)')];
+  if(!speaking||i>=ps.length){stopSpeech();return}
+  ps.forEach(p=>p.classList.remove('now'));
+  ps[i].classList.add('now');ps[i].scrollIntoView({block:'center',behavior:'smooth'});
+  const u=new SpeechSynthesisUtterance(ps[i].textContent);u.rate=0.9;
+  u.onend=()=>speakFrom(i+1);u.onerror=()=>stopSpeech();
+  speechSynthesis.speak(u);
+}
+function stopSpeech(){speaking=false;try{speechSynthesis.cancel()}catch(e){}document.querySelectorAll('#content p.now').forEach(p=>p.classList.remove('now'))}
+$('#speak').addEventListener('click',()=>{
+  if(!('speechSynthesis' in window)){status('🔇 Not supported here');return}
+  if(!paras.length){status('📄⬆️ first');return}
+  stopSpeech();speaking=true;speakFrom(0);
+});
+$('#stop').addEventListener('click',stopSpeech);
+
+apply();
+</script>
+</body>
+</html>
