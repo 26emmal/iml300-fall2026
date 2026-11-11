@@ -1,4 +1,4 @@
-@font-face{font-family:'OpenDyslexic';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/opendyslexic-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'OpenDyslexic';font-style:normal;font-weight:400;font-display:swap;src: url("fonts/OpenDyslexic-Regular.otf") format("opentype");}
 :root{--bg:#faf7f2;--panel:#fff;--ink:#222;--muted:#5b5b5b;--line:#d9d3c8;--accent:#2f6f9f;--accent-ink:#fff;
  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17181a;--panel:#212326;--ink:#ececec;--muted:#a8a8a8;--line:#3a3d41;--accent:#7bb6e0;--accent-ink:#10212e;color-scheme:dark}}
